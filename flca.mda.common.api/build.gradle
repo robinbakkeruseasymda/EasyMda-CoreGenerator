@@ -1,5 +1,5 @@
 
-apply from: "../flca.easymda.plugin/gradle-common/common.gradle"
+apply from: "../common.gradle"
 
 archivesBaseName = "flca.mda.common.api"
 

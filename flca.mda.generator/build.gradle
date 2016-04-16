@@ -1,6 +1,6 @@
 def m3repo = '/home/robin/.m2/repository/' 
 
-apply from: "../flca.easymda.plugin/gradle-common/common.gradle"
+apply from: "../common.gradle"
 
 archivesBaseName = "flca.easymda.generator"
 ext.targetdir = "/tmp/easymda_targets/eclipse/dropins/" +  archivesBaseName + "_" + version 
