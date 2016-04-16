@@ -1,0 +1,1 @@
+# EasyMda-CoreGenerator
