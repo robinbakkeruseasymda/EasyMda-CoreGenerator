@@ -1,0 +1,108 @@
+def m3repo = '/home/robin/.m2/repository/' 
+
+apply from: "../flca.easymda.plugin/gradle-common/common.gradle"
+
+archivesBaseName = "flca.easymda.generator"
+ext.targetdir = "/tmp/easymda_targets/eclipse/dropins/" +  archivesBaseName + "_" + version 
+buildDir = "target"
+
+sourceSets {
+   main {
+      java {
+         srcDirs = ["src/main/java", "src/test/java"]
+      }
+   }
+
+ 
+}
+
+dependencies {
+    compile "junit:junit:4.11",
+    		files("./lib/commons-beanutils-core-1.8.3.jar",
+			"./lib/javaparser-1.0.8.jar",
+			"./lib/commons-logging-1.1.1.jar",
+			"./lib/flca.mda.common.api-4.0.jar",
+			"./lib/javaparser-1.0.8.jar",
+			"./lib/logback-classic-1.0.7.jar",
+			"./lib/logback-core-1.0.7.jar",
+			"./lib/slf4j-api-1.7.1.jar"),
+			"eclipse-plugin:org.eclipse.emf.codegen:4.0",
+			"eclipse-plugin:org.eclipse.osgi:4.0",
+			"eclipse-plugin:org.eclipse.jface:4.0",
+			"eclipse-plugin:org.eclipse.jdt.core:4.0",
+			"eclipse-plugin:org.eclipse.core.resources:4.0",
+			"eclipse-plugin:org.eclipse.equinox.common:4.0",
+			"eclipse-plugin:org.eclipse.core.jobs:4.0",
+			"eclipse-plugin:org.eclipse.ui.console:4.0",
+			"eclipse-plugin:org.eclipse.core.runtime:4.0",
+			"eclipse-plugin:org.eclipse.ui.ide:4.0",
+			"eclipse-plugin:org.eclipse.ui.workbench:4.0",
+			"eclipse-plugin:org.eclipse.core.contenttype:4.0",
+			"eclipse-plugin:org.eclipse.core.commands:4.0",
+			"eclipse-plugin:org.eclipse.swt:4.0"
+			
+}
+
+// gradle dependencies are alphabetacilly ordered!
+task aaa() << {
+}
+aaa.dependsOn {
+	standard
+}
+
+task copyBin(type: Copy) {
+    from( "target/classes/main")
+    into( targetdir + "/")
+    include("com/**")
+}
+
+task copyXml(type: Copy) {
+    from( "src/main/resources")
+    into( targetdir + "/")
+    include("*.xml")
+}
+
+task copyLib(type: Copy) {
+    from( "lib")
+    into( targetdir + "/lib")
+}
+
+task copyMetaInf(type: Copy) {
+    from( "build/MANIFEST.MF")
+    into( targetdir + "/META-INF")
+}
+
+task copyConfig(type: Copy) {
+    from( "config")
+    into( targetdir + "/config")
+}
+
+task copyCartridges(type: Copy) {
+    from( "cartridges")
+    into( targetdir + "/cartridges")
+    include("example.link")
+}
+
+task copyWizard(type: Copy) {
+    from( m3repo + "/easymda/easymda.cartridge.wizzard/2.0/easymda.cartridge.wizzard-2.0.jar")
+    into( targetdir + "/cartridges")
+}
+
+task copyTemplateGenerator(type: Copy) {
+    from( m3repo + "/easymda/easymda.cartridge.template/2.0/easymda.cartridge.template-2.0.jar")
+    into( targetdir + "/cartridges")
+}
+
+task copyWebapp(type: Copy) {
+    from( m3repo + "/easymda/easymda.cartridge.webapp/2.0/easymda.cartridge.webapp-2.0.jar")
+    into( targetdir + "/cartridges")
+}
+
+task copyPluginXml(type: Copy) {
+    from( ".")
+    into( targetdir + "/")
+    include("plugin.xml")
+}
+
+task s(dependsOn: [aaa, copyBin, copyXml, copyLib, copyMetaInf, copyConfig, copyCartridges, copyWizard, copyWebapp, copyTemplateGenerator, copyPluginXml] ) << {
+}

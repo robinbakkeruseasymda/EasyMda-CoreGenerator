@@ -1,0 +1,29 @@
+
+apply from: "../flca.easymda.plugin/gradle-common/common.gradle"
+
+archivesBaseName = "flca.mda.common.api"
+
+buildDir = "target"
+
+dependencies {
+    compile "commons-beanutils:commons-beanutils-core:1.8.3",
+			"com.google.code.javaparser:javaparser:1.0.8",
+			"junit:junit:4.11",
+			"org.slf4j:slf4j-api:1.7.1",
+			"eclipse-plugin:org.eclipse.emf.codegen:4.0",
+			"eclipse-plugin:org.eclipse.osgi:4.0"
+}
+
+
+
+task copyTask(type: Copy) {
+    from( "target/libs/" + archivesBaseName + "-" + version + ".jar")
+    into( "../flca.mda.generator/lib")
+}
+copyTask.dependsOn {
+	standard
+}
+
+task s(dependsOn: [copyTask] ) << {
+} 
+
