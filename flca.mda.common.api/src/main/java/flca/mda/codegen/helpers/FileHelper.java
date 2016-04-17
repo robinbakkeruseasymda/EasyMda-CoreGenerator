@@ -197,7 +197,7 @@ public class FileHelper {
 		File files[] = null;
 
 		if (!f.exists()) {
-			System.out.println(f.getAbsolutePath() + " does mot exist");
+			System.out.println(f.getAbsolutePath() + " does not exist");
 			return;
 		}
 		

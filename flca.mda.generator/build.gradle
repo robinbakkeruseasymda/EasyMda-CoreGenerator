@@ -2,6 +2,8 @@ def m3repo = '/home/robin/.m2/repository/'
 
 apply from: "../common.gradle"
 
+defaultTasks 's'
+
 archivesBaseName = "flca.easymda.generator"
 ext.targetdir = "/tmp/easymda_targets/eclipse/dropins/" +  archivesBaseName + "_" + version 
 buildDir = "target"
@@ -43,9 +45,10 @@ dependencies {
 			
 }
 
-// gradle dependencies are alphabetacilly ordered!
+// gradle dependencies are ordered on name!
 task aaa() << {
 }
+
 aaa.dependsOn {
 	standard
 }

@@ -4,5 +4,5 @@
 # like in the example below.
 # This is particular handy when you developing jet templates
 #
-path=/home/robin/Projects/easymda-code/flca.mda.cartridge.beanmapper/target/classes
+path=/home/robin/Projects/EasyMda/EasyMda-BeanmapperCartridge/flca.mda.cartridge.beanmapper/bin
 

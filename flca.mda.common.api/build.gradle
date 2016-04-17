@@ -1,6 +1,8 @@
 
 apply from: "../common.gradle"
 
+defaultTasks 'standard','copyTask'
+
 archivesBaseName = "flca.mda.common.api"
 
 buildDir = "target"
@@ -9,7 +11,7 @@ dependencies {
     compile "commons-beanutils:commons-beanutils-core:1.8.3",
 			"com.google.code.javaparser:javaparser:1.0.8",
 			"junit:junit:4.11",
-			"org.slf4j:slf4j-api:1.7.1",
+			"org.slf4j:slf4j-api:1.7.7",
 			"eclipse-plugin:org.eclipse.emf.codegen:4.0",
 			"eclipse-plugin:org.eclipse.osgi:4.0"
 }
@@ -24,6 +26,5 @@ copyTask.dependsOn {
 	standard
 }
 
-task s(dependsOn: [copyTask] ) << {
-} 
+
 

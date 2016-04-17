@@ -42,7 +42,7 @@ public interface CodegenConstants
 	//constants for subsdirs
 	String PLUGIN_CONFIG = "config";
 	String PLUGIN_CARTRIDGES = "cartridges";
-	String PLUGIN_API_LIB = "api-lib";
+	String PLUGIN_API_LIB = "lib";
 	
 	//used to indicate that a file doen't have to be generated
 	String NOT_APPLICABLE = "_NotApplicable_";
