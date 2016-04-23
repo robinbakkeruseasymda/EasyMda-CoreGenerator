@@ -4,7 +4,7 @@ apply from: "../common.gradle"
 
 defaultTasks 's'
 
-archivesBaseName = "flca.easymda.generator"
+archivesBaseName = "flca.mda.generator"
 ext.targetdir = "/tmp/easymda_targets/eclipse/dropins/" +  archivesBaseName + "_" + version 
 buildDir = "target"
 
